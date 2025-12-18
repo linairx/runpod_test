@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  fastapi_app:
+    build: .
+    container_name: sam2_fastapi
+    ports:
+      - "8000:8000"
+    volumes:
+      # 关键点：宿主机路径 : 容器内路径
+      - ./data/temp_videos:/app/data/temp_videos
+    environment:
+      - RUNPOD_API_KEY=你的_KEY
+      - RUNPOD_ENDPOINT_ID=你的_ID
+    restart: always
